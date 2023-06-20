@@ -9,7 +9,7 @@ public class AlniseDevoir {
 
     static void devoirVerbe(){
         System.out.print("Quel est le verbe à analyser : ");
-        Verbe monVerbe = new Verbe(sc.nextLine());
+        Verbe monVerbe = new Verbe("");
 
         if(monVerbe.estCorrect()){
             System.out.println(monVerbe.groupeCommentaire());
@@ -51,24 +51,25 @@ public class AlniseDevoir {
 
         int reponse;
 
-        devoirDate();
+        // devoirDate();
 
-        // do{
-        //     System.out.println("\n\t1. Devoir des verbes.\n\t2. Devoir des dates.\n\t3. Quitter");
-        //     System.out.print("\nVotre choix : ");
+        do{
+            System.out.println("\n\t1. Devoir des verbes.\n\t2. Devoir des dates.\n\t3. Quitter");
+            System.out.print("\nVotre choix : ");
 
-        //     reponse = sc.nextInt();
+            reponse = sc.nextInt();
 
-        //     if(reponse == 1) {
-        //         devoirVerbe();
-        //     }else if (reponse == 2) {
-        //         devoirDate();
-        //     } else if (reponse == 3) {
-        //         // Quitte le programme
-        //     } else {
-        //         reponse = 0;
-        //         System.out.println("Votre choix n'est pas correct.\nVeillez choisir selon les options affichées.\n\n");
-        //     }
-        // }while(reponse == 0);
+            if(reponse == 1) {
+                devoirVerbe();
+            }else if (reponse == 2) {
+                devoirDate();
+            } else if (reponse == 3) {
+                // Quitte le programme
+            } else {
+                reponse = 0;
+                System.out.println("Votre choix n'est pas correct.\nVeillez choisir selon les options affichées.\n\n");
+            }
+        }while(reponse == 0);
+        sc.close();
     }
 }
