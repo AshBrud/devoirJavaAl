@@ -12,6 +12,14 @@ public class Verbe {
         verbe = verbeSaisie;
     }
 
+    public void setVerbe(String verbeSaisie) {
+        verbe = verbeSaisie;
+    }
+
+    public String getVerbe(){
+        return verbe;
+    }
+
     public boolean estDuPremierGroupe(){
         return (verbe.substring(verbe.length() - 2).equals("er")) ? true: false;
     }

@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import alDate.AlniseDate;
 import alDate.Verbe;
+import alDate.AlniseMatice;
 
 public class AlniseDevoir {
 
@@ -9,7 +10,7 @@ public class AlniseDevoir {
 
     static void devoirVerbe(){
         System.out.print("Quel est le verbe à analyser : ");
-        Verbe monVerbe = new Verbe("");
+        Verbe monVerbe = new Verbe(sc.nextLine());
 
         if(monVerbe.estCorrect()){
             System.out.println(monVerbe.groupeCommentaire());
@@ -46,30 +47,50 @@ public class AlniseDevoir {
         }
     }
 
+    static int[][] matriceSaisir(){
+        System.out.print("La taille de la matrice : ");
+        int n = sc.nextInt();
+        int[][] matrice = new int[n][n];
+        System.out.println("\nLa taille de la matrice est : " + n);
+
+        for(int i = 0; i < matrice.length; i++) {
+            for(int j = 0; j < matrice.length; j++) {
+                Boolean erreur = false;
+                do{
+                    try {
+                        System.out.print("> ");
+                        matrice[i][j] = sc.nextInt();
+                        erreur = false;
+                    } catch(Exception e) {
+                        System.out.println("Cette matrice ne recoit que des entiers.\n");
+                        erreur = true;
+                    }
+                }while(erreur);
+            }
+        }
+
+        return matrice;
+    }
+
+    static void devoirMatrice(){
+        
+        int[][] matrice = matriceSaisir();
+        AlniseMatice maMatrice = new AlniseMatice();
+
+        // System.out.println(matrice.length);
+
+        maMatrice.taille(matrice.length);
+        maMatrice.remplir(matrice);
+        maMatrice.estMagique();
+    }
+
     public static void main(String[] args) {
         // TODO Auto-generated method stub
 
-        int reponse;
+        // int reponse;
 
         // devoirDate();
-
-        do{
-            System.out.println("\n\t1. Devoir des verbes.\n\t2. Devoir des dates.\n\t3. Quitter");
-            System.out.print("\nVotre choix : ");
-
-            reponse = sc.nextInt();
-
-            if(reponse == 1) {
-                devoirVerbe();
-            }else if (reponse == 2) {
-                devoirDate();
-            } else if (reponse == 3) {
-                // Quitte le programme
-            } else {
-                reponse = 0;
-                System.out.println("Votre choix n'est pas correct.\nVeillez choisir selon les options affichées.\n\n");
-            }
-        }while(reponse == 0);
-        sc.close();
+        // devoirVerbe();
+        devoirMatrice();
     }
 }

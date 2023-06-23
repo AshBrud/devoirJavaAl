@@ -4,8 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.naming.ldap.StartTlsRequest;
-
 public class AlniseDate {
     private String date;
     private String formatDate;
